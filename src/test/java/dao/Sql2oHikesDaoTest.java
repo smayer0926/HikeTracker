@@ -37,14 +37,14 @@ public class Sql2oHikesDaoTest {
     @Test
     public void existingHikeCanBeFoundById() throws Exception {
         Hikes hikes  = setupNew();
-        hikesDao.add(hikes); //add to dao (takes care of saving)
-        Hikes foundHike = hikesDao.findById(hikes.getId()); //retrieve
+        hikesDao.add(hikes);
+        Hikes foundHike = hikesDao.findById(hikes.getId());
         assertEquals(hikes, foundHike);
     }
     @Test
     public void getlistofAllHikes() throws Exception {
         Hikes hikes = setupNew();
-        hikesDao.add(hikes); //add to dao (takes care of saving)
+        hikesDao.add(hikes);
         assertEquals(1, hikesDao.getAll().size());
     }
     @Test
@@ -56,7 +56,7 @@ public class Sql2oHikesDaoTest {
         String initialDescription = "";
         Hikes hikes = setupNew();
         hikesDao.add(hikes);
-        hikesDao.update("Hike", hikes.getId());
+        hikesDao.update("Hike", "California", "None", 5, hikes.getId());
         Hikes updatedHike = hikesDao.findById(hikes.getId());
         assertNotEquals(initialDescription, updatedHike.getHikeName());
     }
@@ -78,9 +78,9 @@ public class Sql2oHikesDaoTest {
         assertTrue(daoSize > 0 && daoSize > hikesDao.getAll().size());
     }
     public Hikes setupNew(){
-        return  new Hikes ("Hikes");
+        return  new Hikes ("Hikes", "Alaska", "Was Super Fun!", 5);
     }
     public Hikes setupOther(){
-        return  new Hikes ("Bobette");
+        return  new Hikes ("OtherHikes", "PCT", "Got Dysenteryin CA", 2);
     }
 }

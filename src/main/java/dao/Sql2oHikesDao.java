@@ -15,7 +15,7 @@ public class Sql2oHikesDao implements HikesDao {
     }
     @Override
     public void add(Hikes hikes) {
-        String sql = "INSERT INTO hikes (hikeName) VALUES (:hikeName)";
+        String sql = "INSERT INTO hikes (hikeName, hikeLocation, hikeNotes, hikeRating) VALUES (:hikeName, :hikeLocation, :hikeNotes, :hikeRating)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .bind(hikes)
@@ -23,7 +23,7 @@ public class Sql2oHikesDao implements HikesDao {
                     .getKey();
             hikes.setId(id);
         } catch (Sql2oException ex) {
-            System.out.println(ex); //oops we have an error!
+            System.out.println(ex);
         }
     }
     @Override
@@ -42,8 +42,8 @@ public class Sql2oHikesDao implements HikesDao {
         }
     }
     @Override
-    public void update(String newHikeName, int id){
-        String sql = "UPDATE hikes SET (hikeName) = (:hikeName) WHERE id=:id";
+    public void update(String newHikeName, String newHikeLocation, String newHikeNotes, int newHikeRating, int id){
+        String sql = "UPDATE hikes SET (hikeName, hikeLocation, hikeNotes, hikeRating) = (:hikeName, :hikeLocation, :hikeNotes, :hikeRating) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("hikeName", newHikeName)

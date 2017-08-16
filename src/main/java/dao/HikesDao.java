@@ -12,7 +12,7 @@ public interface HikesDao {
 
     Hikes findById(int id);
 
-    void update(String newHikeName, int id);
+    void update(String newHikeName, String newHikeLocation, String newHikeNotes, int newHikeRating, int id);
 
     void deleteById(int id);
 
