@@ -1,0 +1,28 @@
+{{#partial "content"}}
+
+
+    {{#if hikes}}
+        <h1>List of Hikes</h1>
+        <ul>
+            {{#each hikes}}
+                <li>{{newHike}}  <a href="/hikes/{{id}}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Add Hike</span></a></li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No Hikes</p>
+    {{/if}}
+    {{#if locations}}
+        <h1>List of Locations</h1>
+        <ul>
+            {{#each locations}}
+                <li>{{newLocation}}  <a href="/locations/new"><span class="glyphicon glyphicon-plus" aria-hidden="true">Add Location</span></a></li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No Locations</p>
+    {{/if}}
+
+
+{{/partial}}
+
+{{> layout.hbs}}

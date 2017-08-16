@@ -7,19 +7,20 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sql2oLocationsDao {
+public class Sql2oLocationsDao implements LocationsDao {
     private final Sql2o sql2o;
     public Sql2oLocationsDao(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
-    public void add(Locations newLocations) {
+    public void add(Locations locations) {
+        String sql= ("INSERT INTO locations (locationDistance, locationDifficulty, locationCity, locationState, locationCountry ) VALUES (:locationDistance, :locationDifficulty, :locationCity, :locationState, :locationCountry) ");
         try (Connection con = sql2o.open()) {
-            int id = (int) con.createQuery("INSERT INTO locations (locationDistance, locationDifficulty, locationCity, locationState, locationCountry ) VALUES (:locationDistance, :locationDifficulty, :locationCity, :locationState, :locationCountry) ")
-                    .bind(newLocations)
+            int id = (int) con.createQuery(sql)
+                    .bind(locations)
                     .executeUpdate()
                     .getKey();
-            newLocations.setId(id);
+            locations.setId(id);
         } catch (Sql2oException e) {
             e.printStackTrace();
         }

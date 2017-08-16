@@ -5,26 +5,24 @@ import models.Locations;
 
 import java.util.List;
 
-/**
- * Created by Guest on 8/16/17.
- */
+
 public interface LocationsDao {
 
 
     //create
-    void add (Locations category);
+    void add(Locations locations);
 
     //read
     List<Locations> getAllLocations();
-    List<Hikes> getAllHikesByLocations (int categoryId);
+//    List<Hikes> getAllHikesByLocations (int id);
 
     Locations findById(int id);
 
     //update
-    void update (int id, String name);
+    void update (String newLocationCity, String newLocationState, String newLocationCountry, int newLocationDistance, int newLocationDifficulty, int id);
 
     //delete
     void deleteById(int id);
-    void clearAllCategories();
-    void clearAllTasksByLocations(int categoryId);
+//    void clearAllCategories();
+//    void clearAllTasksByLocations(int id);
 }

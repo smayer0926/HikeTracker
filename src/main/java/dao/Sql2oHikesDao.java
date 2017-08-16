@@ -47,6 +47,9 @@ public class Sql2oHikesDao implements HikesDao {
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("hikeName", newHikeName)
+                    .addParameter("hikeLocation", newHikeLocation)
+                    .addParameter("hikeNotes", newHikeNotes)
+                    .addParameter("hikeRating", newHikeRating)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

@@ -1,0 +1,30 @@
+{{#partial "content"}}
+    <h1>Add a new Location</h1>
+
+    <form action="/locations/new" method="post">
+        <div class="form-group">
+            <label for="locationDifficulty">Location Difficulty:</label>
+            <input id="locationDifficulty" name="locationDifficulty" class="form-control" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="locationDistance">Location Distance:</label>
+            <input id="locationDistance" name="locationDistance" class="form-control" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="locationCity">Location City:</label>
+            <input id="locationCity" name="locationCity" class="form-control" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="locationState">Location State:</label>
+            <input id="locationState" name="locationState" class="form-control" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="locationCountry">Location Country:</label>
+            <input id="locationCountry" name="locationCountry" class="form-control" type="text" required>
+        </div>
+        <button type="submit" class="btn btn-success">Submit Location</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}
