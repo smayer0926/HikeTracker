@@ -5,21 +5,12 @@
         <h1>List of Hikes</h1>
         <ul>
             {{#each hikes}}
-                <li>{{newHike}}  <a href="/hikes/{{id}}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Add Hike</span></a></li>
+                <li>{{newHike}}</li>
             {{/each}}
         </ul>
     {{else}}
-        <p>No Hikes</p>
-    {{/if}}
-    {{#if locations}}
-        <h1>List of Locations</h1>
-        <ul>
-            {{#each locations}}
-                <li>{{newLocation}}  <a href="/locations/new"><span class="glyphicon glyphicon-plus" aria-hidden="true">Add Location</span></a></li>
-            {{/each}}
-        </ul>
-    {{else}}
-        <p>No Locations</p>
+        <p>No Hikes yet, please add one.</p>
+        <a href="/hikes/new"><button type="button" class="btn btn-default">Enter a Hike</button></a>
     {{/if}}
 
 
