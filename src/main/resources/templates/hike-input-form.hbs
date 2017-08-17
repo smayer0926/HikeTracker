@@ -6,10 +6,10 @@
         <form action="/hikes/{{editHike.id}}/update" method="post">
             <div class="form-group">
                 <label for="hikeName">Edit this hikes's name</label>
-                <input id="hikeName" name="hikeName" type="text" value="{{editHike.hikeName}}">
+                <input id="hikeName" name="hikeName" type="text" value="{{editHike.hikeName}}" required>
             </div>
             <div class="form-group">
-                <label for="hikeLocation">Hike Location: </label>
+                <label for="hikeLocation">Edit Hike Location: </label>
                 <select name="hikeLocation" id="hikeLocation">
                     {{#each availableLocations}}
                         <option value="{{locationState}}">{{locationState}}</option>
@@ -17,12 +17,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="hikeNotes">Hike Notes: </label>
-                <input id="hikeNotes" name="hikeNotes" type="text" value="{{editHike.hikeNotes}}">
+                <label for="hikeNotes">Edit Hike Notes: </label>
+                <input id="hikeNotes" name="hikeNotes" type="text" value="{{editHike.hikeNotes}}" required>
             </div>
             <div class="form-group">
-                <label for="hikeRating">Hike Rating: </label>
-                <input id="hikeRating" name="hikeRating" type="text" value="{{editHike.hikeRating}}">
+                <label for="hikeRating">Edit Hike Rating: </label>
+                <input id="hikeRating" name="hikeRating" type="text" value="{{editHike.hikeRating}}" required>
             </div>
             <button type="submit" class="btn btn-default">Complete Edit</button>
         </form>
@@ -37,7 +37,7 @@
                 <form action="/hikes/new" method="post">
                     <div class="form-group">
                         <label for="hikeName">Hike Name: </label>
-                        <input id="hikeName" name="hikeName" type="text">
+                        <input id="hikeName" name="hikeName" type="text" required>
                     </div>
                     <div class="form-group">
                         <label for="hikeLocation">Hike Location: </label>
@@ -49,11 +49,11 @@
                     </div>
                     <div class="form-group">
                         <label for="hikeNotes">Hike Notes: </label>
-                        <input id="hikeNotes" name="hikeNotes" type="text">
+                        <input id="hikeNotes" name="hikeNotes" type="text" required>
                     </div>
                     <div class="form-group">
                         <label for="hikeRating">Hike Rating: </label>
-                        <input id="hikeRating" name="hikeRating" type="text">
+                        <input id="hikeRating" name="hikeRating" type="text" required>
                     </div>
 
 

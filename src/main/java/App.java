@@ -112,11 +112,13 @@ public class App {
             String notes = request.queryParams("hikeNotes");
             int rating = Integer.parseInt(request.queryParams("hikeRating"));
             hikesDao.update(name,location, notes, rating,idOfHikeToUpdate, 1);
-            return new ModelAndView(model, "hike-detail.hbs");
-        }, new HandlebarsTemplateEngine());
-        }
+            response.redirect("/");
+            return null;
+        });
 
     }
+}
+
 
 
 
