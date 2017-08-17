@@ -59,16 +59,17 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/hikes/new",(request, response) -> {
-            Map<String,Object> model = new HashMap<>();
-            String name = request.queryParams("hikeName");
-            String location = request.queryParams("hikeLocation");
-            String notes = request.queryParams("hikeNotes");
-            int rating = Integer.parseInt(request.queryParams("hikeRating"));
-            Hikes newHike = new Hikes(name, location, notes, rating,1);
-            hikesDao.add(newHike);
-            model.put("newHike", newHike);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
+                    Map<String, Object> model = new HashMap<>();
+                    String name = request.queryParams("hikeName");
+                    String location = request.queryParams("hikeLocation");
+                    String notes = request.queryParams("hikeNotes");
+                    int rating = Integer.parseInt(request.queryParams("hikeRating"));
+                    Hikes newHike = new Hikes(name, location, notes, rating, 1);
+                    hikesDao.add(newHike);
+                    model.put("newHike", newHike);
+                    response.redirect("/");
+                    return null;
+                });
 
         get ("/locations/new", (request, response) -> {
             Map<String,Object> model = new HashMap<>();
@@ -86,7 +87,7 @@ public class App {
             Locations newLocation = new Locations(state);
             locationsDao.add(newLocation);
             model.put("newLocation", newLocation);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "locations-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/hikes/:id", (req, res) -> {
