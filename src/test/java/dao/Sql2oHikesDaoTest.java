@@ -1,6 +1,7 @@
 package dao;
 
 import models.Hikes;
+import models.Locations;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.sql2o.Sql2o;
 
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 
@@ -56,7 +58,7 @@ public class Sql2oHikesDaoTest {
         String initialDescription = "";
         Hikes hikes = setupNew();
         hikesDao.add(hikes);
-        hikesDao.update("Hike", "California", "None", 5, hikes.getId());
+        hikesDao.update("Hike", "California", "None", 5, hikes.getId(), 1);
         Hikes updatedHike = hikesDao.findById(hikes.getId());
         assertNotEquals(initialDescription, updatedHike.getHikeName());
     }
@@ -77,10 +79,12 @@ public class Sql2oHikesDaoTest {
         hikesDao.clearAllHikes();
         assertTrue(daoSize > 0 && daoSize > hikesDao.getAll().size());
     }
+
+
     public Hikes setupNew(){
-        return  new Hikes ("Hikes", "Alaska", "Was Super Fun!", 5);
+        return  new Hikes ("Hikes", "Alaska", "Was Super Fun!", 5,1);
     }
     public Hikes setupOther(){
-        return  new Hikes ("OtherHikes", "PCT", "Got Dysenteryin CA", 2);
+        return  new Hikes ("OtherHikes", "PCT", "Got Dysenteryin CA", 2,1);
     }
 }

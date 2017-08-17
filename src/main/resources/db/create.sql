@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS hikes (
   hikeNotes VARCHAR,
   hikeRating INT,
   hikeCompleted BOOLEAN,
+  locationId INT,
 );
 
 CREATE TABLE IF NOT EXISTS locations (

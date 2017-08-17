@@ -8,13 +8,15 @@ public class Hikes {
     private int hikeRating;
     private boolean hikeCompleted;
     private int id;
+    private int locationId;
 
-    public Hikes(String hikeName, String hikeLocation, String hikeNotes, int hikeRating) {
+    public Hikes(String hikeName, String hikeLocation, String hikeNotes, int hikeRating, int locationId) {
         this.hikeName = hikeName;
         this.hikeLocation = hikeLocation;
         this.hikeNotes = hikeNotes;
         this.hikeRating = hikeRating;
         this.hikeCompleted = false;
+        this.locationId = locationId;
     }
 
     public String getHikeName() {
@@ -53,7 +55,14 @@ public class Hikes {
         return hikeRating;
     }
 
-//    public String getHikeRating() {
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+    //    public String getHikeRating() {
 //        int numRating = hikeRating;
 //        String starRating ="";
 //        for (int i = 0; i < numRating; i++) {

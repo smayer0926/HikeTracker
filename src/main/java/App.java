@@ -49,7 +49,7 @@ public class App {
             String location = request.queryParams("hikeLocation");
             String notes = request.queryParams("hikeNotes");
             int rating = Integer.parseInt(request.queryParams("hikeRating"));
-            Hikes newHike = new Hikes(name, location, notes, rating);
+            Hikes newHike = new Hikes(name, location, notes, rating,1);
             hikesDao.add(newHike);
             model.put("newHike", newHike);
             return new ModelAndView(model, "hike-detail.hbs");
@@ -61,13 +61,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/locations/new",(request, response) -> {
-            Map<String,Object> model = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
             String city = request.queryParams("locationCity");
             String state = request.queryParams("locationState");
             String country = request.queryParams("locationCountry");
             int distance = Integer.parseInt(request.queryParams("locationDistance"));
             int difficulty = Integer.parseInt(request.queryParams("locationDifficulty"));
-            Locations newLocation = new Locations( distance, difficulty,city, state, country);
+            Locations newLocation = new Locations(distance, difficulty, city, state, country);
             locationsDao.add(newLocation);
             model.put("newLocation", newLocation);
             return new ModelAndView(model, "locations-detail.hbs");
