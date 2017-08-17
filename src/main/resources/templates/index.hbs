@@ -1,42 +1,24 @@
 {{#partial "content"}}
-    {{#if newLocation}}
-        <p>Location</p>
-        <ul>
-            <li>Distance:<br> {{newLocation.locationDistance}}</li><br><br>
-            <li>Difficulty:<br> {{newLocation.locationDifficulty}}</li><br><br>
-            <li>City:<br> {{newLocation.locationCity}}</li><br><br>
-            <li>State:<br> {{newLocation.locationState}}</li><br><br>
-            <li>Country:<br> {{newLocation.locationCountry}}</li><br><br>
-        </ul>
+    {{#if locations}}
+        {{#each locations}}
+            <p>Location</p>
+            <ul>
+                <li>State:<br> {{locationState}}</li><br><br>
+            </ul>
+        {{/each}}
     {{/if}}
 
     <h1>List of Hikes</h1>
     <ul>
     {{#if hikes}}
-        <li>{{newHike}} newHike</li>
-        <ul>
-            <li>{{hikes}} hikes</li>
-            <li>{{hikeName}} hikeName</li>
-            <li>{{hikeLocation}} hikeLocation</li>
-            <li>{{hikeNotes}} hikeNotes</li>
-            <li>{{hikeRating}} hikeRating</li>
-        </ul>
-       {{/if}}
-
-
-
-
-
-
+        {{#each hikes}}
+            <ul>
+                <li>{{hikeName}} hikeName</li>
+            </ul>
+        {{/each}}
+    {{/if}}
 
     </ul>
-            <!--{{#each hikes}}-->
-            <!--{{/each}}-->
-            <!--{{#if hikes}}-->
-    <!--{{else}}-->
-        <!--<p>No Hikes yet, please add one.</p>-->
-        <!--<a href="/hikes/new"><button type="button" class="btn btn-default">Enter a Hike</button></a>-->
-    <!--{{/if}}-->
 
 
 {{/partial}}

@@ -9,13 +9,17 @@ public class Locations {
     private String locationCountry;
     private int id;
 
-    public Locations(int locationDistance, int locationDifficulty, String locationCity, String locationState, String locationCountry) {
-        this.locationDistance = locationDistance;
-        this.locationDifficulty = locationDifficulty;
-        this.locationCity = locationCity;
+//    public Locations(int locationDistance, int locationDifficulty, String locationCity, String locationState, String locationCountry) {
+//        this.locationDistance = locationDistance;
+//        this.locationDifficulty = locationDifficulty;
+//        this.locationCity = locationCity;
+//        this.locationState = locationState;
+//        this.locationCountry = locationCountry;
+//    }
+    public Locations(String locationState) {
         this.locationState = locationState;
-        this.locationCountry = locationCountry;
     }
+
 
     public int getLocationDistance() {
         return locationDistance;

@@ -40,6 +40,10 @@ public class App {
 
         get ("/hikes/new", (request, response) -> {
             Map<String,Object> model = new HashMap<>();
+            List<Locations> locations = locationsDao.getAllLocations();
+            List<Hikes> hikes = hikesDao.getAll();
+            model.put("locations", locations);
+            model.put("hikes", hikes);
             return new ModelAndView(model, "hike-input-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -52,7 +56,7 @@ public class App {
             Hikes newHike = new Hikes(name, location, notes, rating,1);
             hikesDao.add(newHike);
             model.put("newHike", newHike);
-            return new ModelAndView(model, "hike-detail.hbs");
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
         get ("/locations/new", (request, response) -> {
@@ -62,16 +66,26 @@ public class App {
 
         post("/locations/new",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String city = request.queryParams("locationCity");
+//            String city = request.queryParams("locationCity");
             String state = request.queryParams("locationState");
-            String country = request.queryParams("locationCountry");
-            int distance = Integer.parseInt(request.queryParams("locationDistance"));
-            int difficulty = Integer.parseInt(request.queryParams("locationDifficulty"));
-            Locations newLocation = new Locations(distance, difficulty, city, state, country);
+//            String country = request.queryParams("locationCountry");
+//            int distance = Integer.parseInt(request.queryParams("locationDistance"));
+//            int difficulty = Integer.parseInt(request.queryParams("locationDifficulty"));
+//            Locations newLocation = new Locations(distance, difficulty, city, state, country);
+            Locations newLocation = new Locations(state);
             locationsDao.add(newLocation);
             model.put("newLocation", newLocation);
-            return new ModelAndView(model, "locations-detail.hbs");
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/hikes/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfHikeToFind = Integer.parseInt(req.params("id"));
+            Hikes newHikes = hikesDao.findById(idOfHikeToFind);
+            model.put("hikes" , newHikes);
+            return new ModelAndView(model, "hike-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
     }
 
