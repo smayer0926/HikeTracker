@@ -59,17 +59,17 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/hikes/new",(request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    String name = request.queryParams("hikeName");
-                    String location = request.queryParams("hikeLocation");
-                    String notes = request.queryParams("hikeNotes");
-                    int rating = Integer.parseInt(request.queryParams("hikeRating"));
-                    Hikes newHike = new Hikes(name, location, notes, rating, 1);
-                    hikesDao.add(newHike);
-                    model.put("newHike", newHike);
-                    response.redirect("/");
-                    return null;
-                });
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("hikeName");
+            String location = request.queryParams("hikeLocation");
+            String notes = request.queryParams("hikeNotes");
+            int rating = Integer.parseInt(request.queryParams("hikeRating"));
+            Hikes newHike = new Hikes(name, location, notes, rating, 1);
+            hikesDao.add(newHike);
+            model.put("newHike", newHike);
+            response.redirect("/");
+            return null;
+        });
 
         get ("/locations/new", (request, response) -> {
             Map<String,Object> model = new HashMap<>();
@@ -78,12 +78,7 @@ public class App {
 
         post("/locations/new",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-//            String city = request.queryParams("locationCity");
             String state = request.queryParams("locationState");
-//            String country = request.queryParams("locationCountry");
-//            int distance = Integer.parseInt(request.queryParams("locationDistance"));
-//            int difficulty = Integer.parseInt(request.queryParams("locationDifficulty"));
-//            Locations newLocation = new Locations(distance, difficulty, city, state, country);
             Locations newLocation = new Locations(state);
             locationsDao.add(newLocation);
             model.put("newLocation", newLocation);
@@ -98,8 +93,30 @@ public class App {
             return new ModelAndView(model, "hike-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/hikes/:hike_id/update", (req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            List<Locations> locations = locationsDao.getAllLocations();
+            int idOfHikeToUpdate = Integer.parseInt(req.params("hike_id"));
+
+            model.put("availableLocations", locations);
+            Hikes editHike = hikesDao.findById(idOfHikeToUpdate);
+            model.put("editHike", editHike);
+            return new ModelAndView(model, "hike-input-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/hikes/:hike_id/update",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            int idOfHikeToUpdate = Integer.parseInt(request.params("hike_id"));
+            Hikes editHike = hikesDao.findById(idOfHikeToUpdate);
+            String name = request.queryParams("hikeName");
+            String location = request.queryParams("hikeLocation");
+            String notes = request.queryParams("hikeNotes");
+            int rating = Integer.parseInt(request.queryParams("hikeRating"));
+            hikesDao.update(name,location, notes, rating,idOfHikeToUpdate, 1);
+            return new ModelAndView(model, "hike-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+        }
 
     }
 
 
-}
+

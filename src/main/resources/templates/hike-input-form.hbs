@@ -1,43 +1,67 @@
 {{#partial "content"}}
 
     {{#if editHike}}
-        <h1>Edit this Post!</h1>
+        <h1>Edit this Hike</h1>
+
         <form action="/hikes/{{editHike.id}}/update" method="post">
-            <label for="hikeName">Edit this hikes's name</label>
-            <input id="hikeName" name="hikeName" type="text" placeholder="{{editHikes.hikeName}}">
+            <div class="form-group">
+                <label for="hikeName">Edit this hikes's name</label>
+                <input id="hikeName" name="hikeName" type="text" value="{{editHike.hikeName}}">
+            </div>
+            <div class="form-group">
+                <label for="hikeLocation">Hike Location: </label>
+                <select name="hikeLocation" id="hikeLocation">
+                    {{#each availableLocations}}
+                        <option value="{{locationState}}">{{locationState}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hikeNotes">Hike Notes: </label>
+                <input id="hikeNotes" name="hikeNotes" type="text" value="{{editHike.hikeNotes}}">
+            </div>
+            <div class="form-group">
+                <label for="hikeRating">Hike Rating: </label>
+                <input id="hikeRating" name="hikeRating" type="text" value="{{editHike.hikeRating}}">
+            </div>
+            <button type="submit" class="btn btn-default">Complete Edit</button>
+        </form>
+
+
+
     {{else}}
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1>Add a new Hike!</h1>
-                        <form action="/hikes/new" method="post">
-                            <div class="form-group">
-                                <label for="hikeName">Hike Name: </label>
-                                <input id="hikeName" name="hikeName" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="hikeLocation">Hike Location: </label>
-                                <select name="hikeLocation" id="hikeLocation">
-                                    {{#each availableLocations}}
-                                        <option value="{{locationState}}">{{locationState}}</option>
-                                    {{/each}}
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="hikeNotes">Hike Notes: </label>
-                                <input id="hikeNotes" name="hikeNotes" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="hikeRating">Hike Rating: </label>
-                                <input id="hikeRating" name="hikeRating" type="text">
-                            </div>
-
-
-                            <button type="submit" class="btn btn-default">Go!</button>
-                        </form>
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Add a new Hike!</h1>
+                <form action="/hikes/new" method="post">
+                    <div class="form-group">
+                        <label for="hikeName">Hike Name: </label>
+                        <input id="hikeName" name="hikeName" type="text">
                     </div>
-                </div>
-        </form>
+                    <div class="form-group">
+                        <label for="hikeLocation">Hike Location: </label>
+                        <select name="hikeLocation" id="hikeLocation">
+                            {{#each availableLocations}}
+                                <option value="{{locationState}}">{{locationState}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hikeNotes">Hike Notes: </label>
+                        <input id="hikeNotes" name="hikeNotes" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="hikeRating">Hike Rating: </label>
+                        <input id="hikeRating" name="hikeRating" type="text">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-default">Go!</button>
+                </form>
+            </div>
+        </div>
+
     {{/if}}
 
 {{/partial}}
