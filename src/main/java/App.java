@@ -53,7 +53,7 @@ public class App {
             Map<String,Object> model = new HashMap<>();
             List<Locations> locations = locationsDao.getAllLocations();
             List<Hikes> hikes = hikesDao.getAll();
-            model.put("locations", locations);
+            model.put("availableLocations", locations);
             model.put("hikes", hikes);
             return new ModelAndView(model, "hike-input-form.hbs");
         }, new HandlebarsTemplateEngine());

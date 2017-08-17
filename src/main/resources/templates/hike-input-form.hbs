@@ -17,7 +17,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="hikeLocation">Hike Location: </label>
-                                <input id="hikeLocation" name="hikeLocation" type="text">
+                                <select name="hikeLocation" id="hikeLocation">
+                                    {{#each availableLocations}}
+                                        <option value="{{locationState}}">{{locationState}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="hikeNotes">Hike Notes: </label>

@@ -4,9 +4,14 @@ html {
 }
 
 body {
-  background: url("/images/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
+    ckground: url("/images/background.jpg");
+    background: #f9f9f9;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    margin: 40px;
+    font-family: 'Open Sans', 'sans-serif';
+    background-color: #fff;
+    color: #444;
 }
