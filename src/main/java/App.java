@@ -90,9 +90,9 @@ public class App {
             return new ModelAndView(model, "locations-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/hikes/:id", (req, res) -> {
+        get("/hikes/:hike_id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfHikeToFind = Integer.parseInt(req.params("id"));
+            int idOfHikeToFind = Integer.parseInt(req.params("hike_id"));
             Hikes newHikes = hikesDao.findById(idOfHikeToFind);
             model.put("hikes" , newHikes);
             return new ModelAndView(model, "hike-detail.hbs");

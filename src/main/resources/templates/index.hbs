@@ -14,7 +14,7 @@
         <h1>List of Hikes</h1>
         {{#each hikes}}
             <ul>
-                <li>Hike Name: {{hikeName}}</li>
+                <li>Hike Name: {{hikeName}}<a href="/hikes/{{id}}"><br>read more...</a></li>
             </ul>
         {{/each}}
     {{/if}}
