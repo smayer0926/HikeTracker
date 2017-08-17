@@ -115,6 +115,26 @@ public class App {
             response.redirect("/");
             return null;
         });
+        get("/locations/:location_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfLocationToFind = Integer.parseInt(req.params("location_id"));
+            Locations newLocations = locationsDao.findById(idOfLocationToFind);
+            model.put("locations", newLocations);
+            return new ModelAndView(model, "locations-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/locations/:location_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int locationList = Integer.parseInt(req.params("location_id"));
+            Locations locations = locationsDao.findById(locationList);
+            String location = req.queryParams("locationsState");
+            locationsDao.add(locations);
+            model.put("locations", location);
+
+            res.redirect("/");
+            return null;
+        });
+
+
 
     }
 }

@@ -1,10 +1,10 @@
 {{#partial "content"}}
-    {{#if newLocation}}
+    {{#if locations}}
         <p>Location</p>
-        <ul>
-            <li>State:<br> {{newLocation.locationState}}</li><br><br>
-        </ul>
-        <a href="/"><button type="button" class="btn btn-default">Back to Main Page</button></a>
+            <ul>
+                <li>State:<br> {{locations.locationState}}</li><br><br>
+            </ul>
+            <a href="/"><button type="button" class="btn btn-default">Back to Main Page</button></a>
     {{else}}
         <p>No locations</p>
     {{/if}}
