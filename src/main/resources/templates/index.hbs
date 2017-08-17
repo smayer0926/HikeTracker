@@ -1,19 +1,20 @@
 {{#partial "content"}}
     {{#if locations}}
         {{#each locations}}
-            <p>Location</p>
+            <h1>Location</h1>
             <ul>
                 <li>State:<br> {{locationState}}</li><br><br>
             </ul>
         {{/each}}
     {{/if}}
 
-    <h1>List of Hikes</h1>
+
     <ul>
     {{#if hikes}}
+        <h1>List of Hikes</h1>
         {{#each hikes}}
             <ul>
-                <li>{{hikeName}} hikeName</li>
+                <li>Hike Name: {{hikeName}}</li>
             </ul>
         {{/each}}
     {{/if}}

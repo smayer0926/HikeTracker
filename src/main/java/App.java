@@ -26,8 +26,19 @@ public class App {
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oLocationsDao locationsDao = new Sql2oLocationsDao(sql2o);
         Sql2oHikesDao hikesDao = new Sql2oHikesDao(sql2o);
-
-
+        // get: delete all tasks
+        get("/hikes/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            hikesDao.clearAllHikes();
+            res.redirect("/");
+            return null;
+        });
+        get("/locations/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            locationsDao.clearAllLocations();
+            res.redirect("/");
+            return null;
+        });
         //get: Get ALL instances of objects
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
